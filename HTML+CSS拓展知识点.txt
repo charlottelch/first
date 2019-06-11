@@ -1,0 +1,228 @@
+
+1、overflow-x
+答：overflow-x 属性规定是否对内容的左/右边缘进行裁剪 - 如果溢出元素内容区域的话。
+    overflow-x: visible|hidden|scroll|auto|no-display|no-content;
+    visible：不裁剪内容，可能会显示在内容框之外
+    hidden：裁剪内容 - 不提供滚动机制。
+    scroll：裁剪内容 - 提供滚动机制。
+    auto：如果溢出框，则应该提供滚动机制。	
+    no-display：如果内容不适合内容框，则删除整个框。	
+    no-content：如果内容不适合内容框，则隐藏整个内容。
+
+2、px em rem pt
+答：px(pixel,像素)	Absolute	1个Viewport像素，相对长度单位。像素px是相对于显示器屏幕分辨率而言的。
+    pt(point,磅)	Absolute	1pt = 1/72英寸，物理长度单位，指的是72分之一英寸。
+    em	Relative	相对于父元素的字体尺寸，相对长度单位。相对于当前对象内文本的字体尺寸。（基于父元素）
+    rem	Relative	相对长度单位,(即root em) 相对于html标签的字体尺寸,相对的只是HTML根元素。（基于根元素）
+3、命名规范https://imweb.github.io/rule
+答：腾讯前端规范。（编码规范、组件规范、构建规范）。
+
+视口 视图窗口的单位 vw  vh  100vh
+答：在桌面端，视口指的是在桌面端，指的是浏览器的可视区域；而在移动端较为复杂，它涉及到三个视口：分别是 Layout Viewport（布局视口）、 Visual    Viewport（视觉视口）、Ideal Viewport。
+  1vw 等于视口宽度的1%
+vh : 1vh 等于视口高度的1%
+  用视口单位度量，视口宽度为100vw，高度为100vh
+4、css超出区域 自动换行
+答：加这一句样式：style="word-wrap: break-word; word-break: break-all;width: 100%; "
+
+5、word-spacing
+答:word-spacing属性增加或减少字与字之间的空白。其后的值可为：
+   normal   默认。定义单词间的标准空间。
+   length   定义单词间的固定空间。
+   inherit  规定应该从父元素继承 word-spacing 属性的值。
+6、background-clip
+答：background-clip属性指定背景绘制区域。其后的值可为;
+    border-box	默认值。背景绘制在边框方框内（剪切成边框方框）。
+    padding-box	背景绘制在衬距方框内（剪切成衬距方框）。
+    content-box	背景绘制在内容方框内（剪切成内容方框）。
+7、纯CSS完美实现垂直水平居中的6种布局方式
+   （1）、绝对定位+margin：auto。
+   （2）、绝对定位+margin反向偏移
+   （3）、绝对定位+transform反向偏移。
+   （4）、display：tabel。
+   （5）、display: inline-block。
+   （6）、display: flex-box
+8、如何居中一个浮动元素??
+答：（1）、可以在外层加一个div，外层的div采用margin居中，里层的div设置宽度为100%。
+    （2）、设置当前div的宽度，然后设置margin-left:50%; position:relative; left:-250px;其中的left是宽度的一半。
+
+9、事件穿透pointer-events
+答：pointer-events允许鼠标点击穿透后面的元素。
+   字面理解是点击鼠标事件，值分别是auto和none。
+
+当使用pointer-events:none,表示它将捕获不到任何点击，而只是让事件穿透到它的下面。
+
+10、direction 字体排版方向
+答： direction属性，用来定义文本流的书写方向，可选值有 ltr | rtl，默认值为 ltr。ltr（left-to-right）表示文本流从左到右书写，rtl（right-to-left）表示文本流从右到左书写。
+
+direction属性影响块级元素中文本的书写方向，但不会影响拉丁文的字母数字字符，它总是从左到右书写，但会影响拉丁文的标点符号。对于行内元素，只有当 Unicode-bidi 属性设置为 embed 或 bidi-override 时才有效。
+11、white-space
+答：white-space 属性设置如何处理元素内的空白。其值及相关属性如下：
+    normal	默认。空白会被浏览器忽略。
+    pre	空白会被浏览器保留。其行为方式类似 HTML 中的 <pre> 标签。
+    nowrap	文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。
+    pre-wrap	保留空白符序列，但是正常地进行换行。
+    pre-line	合并空白符序列，但是保留换行符。
+    inherit	规定应该从父元素继承 white-space 属性的值。
+12、text-overflow用于文本溢出:
+答：在CSS3中，text-overflow属性的基本语法如下：
+   clip:表示不显示省略文本，简单的裁切。
+   ellipsis:表示对象文本溢出时显示省略标记，省略标记插入的位置是最后一个字符。
+   ellipsis-word：表示当对象文本溢出时显示省略标记，省略标记插入的位置是最后一个词（word）。
+   实际上，text-overflow属性仅用于决定当文本溢出时是否显示省略标记，并不具备样式定义的功能，要实现溢出时产生省略号的效果，应该在定义两个样   式：强制文本在一行内显示（white-space:nowrap）和溢出内容为隐藏（overflow:hidden），只有这样才能实现溢出文本显示为省略号效果。
+   
+13、单行缩略的实现如下:
+.oneline {
+    white-space: nowrap; //强制文本在一行内输出
+    overflow: hidden; //隐藏溢出部分
+    text-overflow: ellipsis; //对溢出部分加上...
+}
+
+14、多行缩略实现如下(主要针对webkit内核):
+.multiline {
+    display: -webkit-box !important;
+    overflow: hidden;
+    
+    text-overflow: ellipsis;
+    word-break: break-all;
+    
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+
+15、文字倒影效果box-reflect
+答：box-reflect其属性值如下：
+  none：无倒影
+    <direction>　Demo: 简单图片倒影 See with Webkit
+    above：指定倒影在对象的上边
+    below：指定倒影在对象的下边
+    left：指定倒影在对象的左边
+    right：指定倒影在对象的右边
+    <offset>　Demo: 图片与倒影间隔 See with Webkit
+    <length>：用长度值来定义倒影与对象之间的间隔。可以为负值
+    <percentage>：用百分比来定义倒影与对象之间的间隔。可以为负值
+    <mask-box-image>　Demo: 更真实的图片倒影 文字倒影与渐变 See with Webkit
+    none：无遮罩图像
+    <url>：使用绝对或相对地址指定遮罩图像。
+    <linear-gradient>：使用线性渐变创建遮罩图像。
+    <radial-gradient>：使用径向(放射性)渐变创建遮罩图像。
+    <repeating-linear-gradient>：使用重复的线性渐变创建背遮罩像。
+    <repeating-radial-gradient>：使用重复的径向(放射性)渐变创建遮罩图像。
+
+16、理解 line-height 和 vertical-align
+答：
+   line-height行高是指文本行基线之间的距离。行高line-height实际上只影响行内元素和其他行内内容，而不会直接影响块级元素，也可以为一个块级元      素设置line-height，但这个值只是应用到块级元素的内联内容时才会有影响。在应用到块级元素时，line-height定义了元素文本基线之间的最小距离，      即最小行高
+
+　　[注意]如果块级元素中的某一个子级内联元素设置的行高比最小行高大，则行框以设置行高来渲染；如果小，则以最小行高来渲染。因为，每一个子级内      联元素的行高都是行内框的高度，只有一行中所有的行内元素(包括代表父级元素的匿名文本)，最大的行内框高度才能成为整行的行高。下面会有详细解      释
+
+　　值: <length> | <percentage> | <number> | normal | inherit
+
+　　初始值: normal(通常line-height:normal的值为font-size值的1.2倍)
+
+　　应用于: 所有元素
+
+　　继承性: 有
+
+　　百分数: 相对于元素的字体大小font-size
+  vertical-align用来设置垂直对齐方式，所有垂直对齐的元素都会影响行高
+
+　　值: baseline | sub | super | top | text-top | middle | bottom | text-bottom | <length> | <percentage> | inherit
+
+　　初始值: baseline
+
+　　应用于: 行内元素、替换元素、表单元格
+
+　　继承性: 无
+
+　　百分数: 相对于元素的行高line-height
+ 17、
+  line box：line box的高度由最高的inline box高度或inline-block高度决定。
+  inline(-level) box：inline box的高度由line-height决定，一半的line-height在content area的上面，另一半在下面。line-height从content area的                         水平中垂线开始计算。想得到inline元素的inline box高度，把inline元素改变成inline-block(不手动设置高度)元素看看。
+  content area：围绕着文字的一种box，高度由font-size和font-family决定。在chrome控制器里，你用鼠标志向某个内敛元素，显示的高度值。
+  baseline：普通文本框的baseline，为里面文本的基线，基线的位置取决font-size和line-height。
+            inline元素的baseline，为内容盒content-box里面文本框的基线。
+            有处于正常流的内容，baseline为最后一个linebox的baseline。(linebox的baseline后面有说到）；overflow不为visible，baseline为               margin-box的下边界；没有内容，baseline为margin-box的下边界
+            linebox的baseline以各个元素中最下面的baseline为基准，就是说谁的baseline在最下面，就以谁的baseline为基准进行对齐。
+            
+
+
+18、简单说 CSS中的 object-fit 与 object-position
+答：它们是为了处理替换元素（replaced elements）的自适应问题，简单的说，就是处理替换元素的变形（这里指长宽比例变形）问题。
+    语法：
+
+      object-fit: fill | contian | cover | none | scale-down;
+
+
+
+      fill ： 默认值。填充，可替换元素填满整个内容区域，可能会改变长宽比，导致拉伸。
+
+      contain ： 包含，保持原始的尺寸比例，保证可替换元素完整显示，宽度或高度至少有一个和内容区域的宽度或高度一致，部分内容会空白。
+
+      cover ： 覆盖，保持原始的尺寸比例，保证内容区域被填满。因此，可替换元素可能会被切掉一部分，从而不能完整展示。
+
+      none ： 保持可替换元素原尺寸和比例。
+
+      scale-down ： 等比缩小。就好像依次设置了none或contain, 最终呈现的是尺寸比较小的那个。
+
+19、src和href的区别
+答：src 是指向物件的来源地址，是引入。在 img、script、iframe 等元素上使用。
+    href 是超文本引用，指向需要连结的地方，是与该页面有关联的，是引用。在 link和a 等元素上使用。
+
+20、doctype作用，标准模式与兼容模式各有什么区别
+答：
+    定义：doctype是document type(文档类型)的简写,用来告诉浏览器的解析器使用哪种HTML或XHTML规范解析页面。
+    作用：声明位于位于HTML文档中的第一行，处于 标签之前。 
+          告知浏览器的解析器用什么文档标准解析这个文档。 
+          DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。
+    区别：标准模式的排版 和JS运作模式都是以该浏览器支持的最高标准运行。 
+          在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。
+
+21、页面导入样式时，使用link 和 @import有什么区别
+答：（1）link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;
+    （2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
+    （3）import是CSS2.1 提出的，只在IE5以上才能被识别，而link是XHTML标签，无兼容问题;
+
+22、变量
+    CSS:root{--bgColor: #90ffc1;}
+    .box {background:var(--bgColor);}
+答：CSS自定义变量有过编程基础的人对变量一词应该不陌生。CSS 变量，即由网页的作者或用户定义的实体，用来指定文档中的特定变量。更准确来说，应称    之为 CSS 自定义属性 ，不过为更好理解称之为 CSS 变量。然而学过CSS的人都知道，CSS 中是没有变量而言的，要使用 CSS 变量，只能借助 SASS 或者     LESS 预编译器。但现在，我们可以直接在CSS中定义和使用变量
+
+23、mix-blend-mode 混合模式详解
+答：mix-blend-mode: normal; ? ? ? ? ?//正常
+mix-blend-mode: 
+    mix-blend-mode: multiply;        //正片叠底
+    mix-blend-mode: screen; ? ? ? ? ?//滤色
+
+    mix-blend-mode: overlay; ? ? ? ? //叠加
+
+    mix-blend-mode: darken; ? ? ? ? ?//变暗
+    
+    mix-blend-mode: lighten; ? ? ? ? //变亮
+    mix-blend-mode: color-dodge; ? ? //颜色减淡
+
+    mix-blend-mode: color-burn; ? ? ?//颜色加深
+
+    mix-blend-mode: hard-light; ? ? ?//强光
+
+    mix-blend-mode: soft-light; ? ? ?//柔光
+
+    mix-blend-mode: difference; ? ? ?//差值
+
+    mix-blend-mode: exclusion; ? ? ? //排除
+
+    mix-blend-mode: hue; ? ? ? ? ? ? //色相
+    mix-blend-mode: saturation; ? ? ?//饱和度
+
+    mix-blend-mode: color; ? ? ? ? ? //颜色
+
+    mix-blend-mode: luminosity; ? ? ?//亮度
+
+    mix-blend-mode: initial; ? ? ? ? //初始
+
+    mix-blend-mode: inherit; ? ? ? ? //继承
+
+    mix-blend-mode: unset; ? ? ? ? ? //复原
+
+24、取消下拉框边框 -webkit-appearance
+答：border-style:none
